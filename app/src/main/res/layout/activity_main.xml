@@ -1,0 +1,100 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="192dp"
+        android:layout_height="103dp"
+        android:layout_x="62dp"
+        android:layout_y="253dp"
+        android:text="计数" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="114dp"
+        android:layout_height="64dp"
+        android:layout_x="104dp"
+        android:layout_y="18dp"
+        android:text="刷新" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="238dp"
+        android:layout_y="117dp"
+        android:text="0"
+        android:textColor="#ff00cc"
+        android:textSize="30px"
+        android:textStyle="bold"
+        tools:context=".MainActivity" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="238dp"
+        android:layout_y="191dp"
+        android:text="0"
+        android:textColor="#ff00cc"
+        android:textSize="30px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="20dp"
+        android:layout_y="120dp"
+        android:text="大悲咒" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="101dp"
+        android:layout_y="118dp"
+        android:text="0"
+        android:textColor="#ff00cc"
+        android:textSize="30px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="182dp"
+        android:layout_y="120dp"
+        android:text="心经" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="194dp"
+        android:text="往生咒" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="100dp"
+        android:layout_y="193dp"
+        android:text="0"
+        android:textColor="#ff00cc"
+        android:textSize="30px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="182dp"
+        android:layout_y="197dp"
+        android:text="七佛" />
+
+</AbsoluteLayout>
