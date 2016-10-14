@@ -5,14 +5,6 @@
     android:layout_height="wrap_content" >
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="192dp"
-        android:layout_height="103dp"
-        android:layout_x="62dp"
-        android:layout_y="253dp"
-        android:text="计数" />
-
-    <Button
         android:id="@+id/button1"
         android:layout_width="114dp"
         android:layout_height="64dp"
@@ -27,7 +19,7 @@
         android:layout_x="238dp"
         android:layout_y="117dp"
         android:text="0"
-        android:textColor="#ff00cc"
+        android:textColor="#ff1200"
         android:textSize="30px"
         android:textStyle="bold"
         tools:context=".MainActivity" />
@@ -39,7 +31,7 @@
         android:layout_x="238dp"
         android:layout_y="191dp"
         android:text="0"
-        android:textColor="#ff00cc"
+        android:textColor="#ff1200"
         android:textSize="30px"
         android:textStyle="bold" />
 
@@ -58,7 +50,7 @@
         android:layout_x="101dp"
         android:layout_y="118dp"
         android:text="0"
-        android:textColor="#ff00cc"
+        android:textColor="#ff1200"
         android:textSize="30px"
         android:textStyle="bold" />
 
@@ -85,7 +77,7 @@
         android:layout_x="100dp"
         android:layout_y="193dp"
         android:text="0"
-        android:textColor="#ff00cc"
+        android:textColor="#ff1200"
         android:textSize="30px"
         android:textStyle="bold" />
 
@@ -96,5 +88,80 @@
         android:layout_x="182dp"
         android:layout_y="197dp"
         android:text="七佛" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="192dp"
+        android:layout_height="103dp"
+        android:layout_x="63dp"
+        android:layout_y="252dp"
+        android:text="计数" />
+
+    <RadioGroup
+        android:id="@+id/tab_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal" >
+
+        #http://www.cnblogs.com/xiaofeixiang/p/4156732.html
+        <RadioButton
+            android:id="@+id/rbChat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_selector_weixing"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="2dp"
+            android:text="微信"
+            android:textColor="@color/tab_selector_tv_color" />
+
+        <RadioButton
+            android:id="@+id/rbAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_selector_tongxunlu"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="2dp"
+            android:text="通讯录"
+            android:textColor="@color/tab_selector_tv_color" />
+
+        <RadioButton
+            android:id="@+id/rbFind"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_selector_faxian"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="2dp"
+            android:text="发现"
+            android:textColor="@color/tab_selector_tv_color" />
+
+        <RadioButton
+            android:id="@+id/rbMe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_selector_wo"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="2dp"
+            android:text="我"
+            android:textColor="@color/tab_selector_tv_color" />
+
+    </RadioGroup>
 
 </AbsoluteLayout>
