@@ -1,18 +1,89 @@
 package com.example.david.xiaofangzijishuqi;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.database.Cursor;
-import android.util.Log;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.tbHeadBar)
+    Toolbar mTbHeadBar;
+
+    /*侧滑菜单布局*/
+    @BindView(R.id.llMenu)
+    LinearLayout mLlMenu;
+
+    /*侧滑菜单ListView放置菜单项*/
+    @BindView(R.id.lvMenu)
+    ListView mLvMenu;
+
+    @BindView(R.id.ivContent)
+    ImageView mIvContent;
+
+    @BindView(R.id.dlMenu)
+    DrawerLayout mMyDrawable;
+
+    ActionBarDrawerToggle mToggle;
+
+    private List<String> lvMenuList = new ArrayList<String>() {{
+        add("angry");
+        add("happy");
+        add("sad");
+        add("embarrassed");
+    }};
+
+    private List<Integer> imageList = new ArrayList<Integer>() {{
+        add(R.drawable.ic_launcher);
+        add(R.drawable.ic_launcher);
+        add(R.drawable.ic_launcher);
+        add(R.drawable.ic_launcher);
+    }};
+
+    private void initToolBarAndDrawableLayout() {
+        setSupportActionBar(mTbHeadBar);
+  /*以下俩方法设置返回键可用*/
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  /*设置标题文字不可显示*/
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mToggle = new ActionBarDrawerToggle(this, mMyDrawable, mTbHeadBar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                //Toast.makeText(MainActivity.this, R.string.open, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                //Toast.makeText(MainActivity.this, R.string.close, Toast.LENGTH_SHORT).show();
+            }
+        };
+        /*mMyDrawable.setDrawerListener(mToggle);不推荐*/
+        mMyDrawable.addDrawerListener(mToggle);
+        mToggle.syncState();/*同步状态*/
+    }
 
     public int addnumtype = 1;
     public DBAdapter db = new DBAdapter(this);//使用数据库类
@@ -26,6 +97,18 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+        //初始化Toolbar与DrawableLayout
+        initToolBarAndDrawableLayout();
+        mLvMenu.setAdapter(new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, lvMenuList));
+        mLvMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mIvContent.setImageResource(imageList.get(position));
+                mMyDrawable.closeDrawers();//收起抽屉
+            }
+        });
 
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);

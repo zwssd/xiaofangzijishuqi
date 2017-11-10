@@ -3,6 +3,9 @@
     <string name="app_name">android</string>
     <string name="hello_world">0</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">新小房子</string>
+    <string name="title_activity_main">新小房子aa</string>
+    <string name="emotion">EMOTION</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
 </resources>
