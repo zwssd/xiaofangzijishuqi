@@ -173,15 +173,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
             /*
-             * 
              * add()方法的四个参数，依次是：
-             * 
              * 1、组别，如果不分组的话就写Menu.NONE,
-             * 
              * 2、Id，这个很重要，Android根据这个Id来确定不同的菜单
-             * 
              * 3、顺序，那个菜单现在在前面由这个参数的大小决定
-             * 
              * 4、文本，菜单的显示文本
              */
         menu.add(Menu.NONE, Menu.FIRST + 1, 1, "大悲咒").setIcon(
@@ -198,8 +193,6 @@ public class MainActivity extends AppCompatActivity {
                 android.R.drawable.ic_menu_delete);
         menu.add(Menu.NONE, Menu.FIRST + 6, 6, "显示记录").setIcon(
                 android.R.drawable.ic_menu_help);
-        menu.add(Menu.NONE, Menu.FIRST + 7, 7, "初始化").setIcon(
-                android.R.drawable.ic_menu_info_details);
         return true;
     }
 
@@ -250,12 +243,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 db.close();
                 Toast.makeText(this, mylog, Toast.LENGTH_LONG).show();
-                break;
-            case Menu.FIRST + 7:
-                db.open();
-                db.myCreate();
-                db.close();
-                Toast.makeText(this, "数据初始化成功了！", Toast.LENGTH_LONG).show();
                 break;
         }
         return false;

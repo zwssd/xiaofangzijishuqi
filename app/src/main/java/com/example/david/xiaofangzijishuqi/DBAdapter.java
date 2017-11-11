@@ -22,10 +22,10 @@ public class DBAdapter {
     private static final String DATABASE_TABLE2 = "mylog";
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_CREATE =
-            "create table mynum (id integer primary key autoincrement,dbz integer not null, "
+            "create table if not exists mynum (id integer primary key autoincrement,dbz integer not null, "
                     + "xj integer not null,wsz integer not null,qf integer not null);";
     private static final String DATABASE_CREATE2 =
-            "create table mylog (id integer primary key autoincrement, "
+            "create table if not exists mylog (id integer primary key autoincrement, "
                     + "mydate date not null);";
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -46,24 +46,26 @@ public class DBAdapter {
             // TODO Auto-generated method stub
             db.execSQL(DATABASE_CREATE);
             db.execSQL(DATABASE_CREATE2);
+            //查询获得游标
+            Cursor cursor = db.query(DATABASE_TABLE,null,null,null,null,null,null);
+            //判断游标是否为空
+            if(!cursor.moveToFirst()) {
+                db.execSQL("insert into " + DATABASE_TABLE + "(id,dbz,xj,wsz,qf)values(0,0,0,0,0)");
+            }
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             // TODO Auto-generated method stub
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);     //删除原来的表
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);      //删除原来的表
             db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE2);     //删除原来的表
-            onCreate(db);                                                      //重新创建删除的表
+            onCreate(db);                                              //重新创建删除的表
         }
     }
 
     //初始化数据库
     public void myCreate() {
-        //db.execSQL("DROP TABLE IF EXISTS "+DATABASE_TABLE);
-        //db.execSQL(DATABASE_CREATE);
-        db.execSQL("insert into " + DATABASE_TABLE + "(id,dbz,xj,wsz,qf)values(0,0,0,0,0)");
-        //db.execSQL("DROP TABLE IF EXISTS "+DATABASE_TABLE2);
-        //db.execSQL(DATABASE_CREATE2);
+        //db.execSQL("insert into " + DATABASE_TABLE + "(id,dbz,xj,wsz,qf)values(0,0,0,0,0)");
     }
     //---打开数据库---
 
@@ -91,22 +93,8 @@ public class DBAdapter {
         //return db.insert(DATABASE_TABLE2, null, initialValues);
     }
 
-    //---检索所有标题---
-
-    public Cursor getAllTitles() {
-        return db.query(DATABASE_TABLE2, new String[]{
-                        date},
-                null,
-                null,
-                null,
-                null,
-                null);
-    }
-
     //读取全部计数
     public Cursor getmynum() {
-        //String mysql = "update "+DATABASE_TABLE+" set dbz=100,xj=100,wsz=100,qf=100 where id=0";
-        //db.execSQL(mysql);
         return db.rawQuery("select * from " + DATABASE_TABLE + " where id=0", null);
     }
 
@@ -116,7 +104,6 @@ public class DBAdapter {
     }
 
     //---更新一个计数---
-
     public boolean updatenum(int addnumtype) {
         String mysqlset = "";
         switch (addnumtype) {
@@ -140,16 +127,9 @@ public class DBAdapter {
         } catch (SQLException ex) {
             return false;
         }
-    /*ContentValues args = new ContentValues();
-	args.put(KEY_ISBN, isbn);
-	args.put(KEY_TITLE, title);
-	args.put(KEY_PUBLISHER, publisher);
-	return db.update(DATABASE_TABLE, args,
-	KEY_ROWID + "=" + rowId, null) > 0;*/
     }
 
     //---清空计数---
-
     public int cleannum() {
         try {
             int dbz = 0;
